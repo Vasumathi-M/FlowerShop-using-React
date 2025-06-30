@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './Auth.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate=useNavigate();
   const[formData,setFormData]=useState({
-    fullname:'',
+    fullName:'',
     email:'',
     password:'',
     confirmPassword:''
@@ -28,16 +28,16 @@ const Signup = () => {
   }
   return (
     <div className="auth_container">
-      <div className="auth_card" onSubmit={handleSubmit}>
+      <div className="auth_card" >
         <h2>Sign Up</h2>
-        <form className="auth_form">
-          <input type="text" placeholder="Full Name" name='fullname' required onChange={handleChange} />
+        <form className="auth_form" onSubmit={handleSubmit}>
+          <input type="text" placeholder="Full Name" name='fullName' required onChange={handleChange} />
           <input type="email" placeholder="Email" name='email' required onChange={handleChange} />
           <input type="password" placeholder="Password" name='password' required onChange={handleChange} />
           <input type="password" placeholder="Confirm Password" name='confirmPassword' required onChange={handleChange} />
           <button type="submit">Create Account</button>
         </form>
-        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Already have an account? <Link to="/login">Login</Link></p>
       </div>
     </div>
   );

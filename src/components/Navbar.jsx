@@ -1,47 +1,82 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Navbar.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+    const [user, setUser] = useState();
+    const navigate=useNavigate();
+    useEffect(() => {
+        const name = localStorage.getItem('name');
+        if (name) {
+            setUser(name);
+        }
+        else {
+            navigate('/')
+        }
+
+    }, []);
+    const logout =()=> {
+        localStorage.removeItem('name'); //removes name & password from local storage after logout
+        localStorage.removeItem('password');
+        setUser(''); //removes user
+        navigate('/'); //goes back to home page
+    }
     return (
         <>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="/">Flower <span style={{color:'hotpink'}}>Shop</span></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+                <div className="container-fluid">
+                    <Link className="navbar-brand" to="/">Flower <span style={{ color: 'hotpink' }}>Shop</span></Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/gallery">Gallery</a>
-                            </li>
-                         
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About</a>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/gallery">Gallery</Link>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/contact">Contact</a>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/about">About</Link>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/contact">Contact</Link>
                             </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/signup">Sign Up</a>
-                            </li>
+                            {!user &&(
+                                <>
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/login">Login</Link>
+                                    </li>
 
+                                    <li className="nav-item">
+                                        <Link className="nav-link" to="/signup">Sign Up</Link>
+                                    </li>
+
+                                </>
+                            )}
+                            {user && (
+                                <>
+                                    <li className="nav-item">
+                                        <Link className="nav-link">Welcome,{user}</Link>
+                                    </li>
+
+                                    <li className="nav-item">
+                                        <button className="btn btn-outline-success" onClick={logout}>Logout</button>
+                                    </li>
+
+                                </>
+                            )}
 
 
 
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        <form className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
                 </div>

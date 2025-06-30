@@ -1,8 +1,15 @@
 import Carousel from 'better-react-carousel'
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Gallery.css'
+import {useNavigate } from 'react-router-dom'
 
 const Gallery = () => {
+  const navigate=useNavigate();
+  useEffect(()=>{
+    if(!localStorage.getItem('name')){
+      navigate('/login')
+    }
+  })
   return (
 
     <>
