@@ -1,0 +1,72 @@
+/* Navbar.css */
+
+.navbar {
+  background: linear-gradient(90deg, black, purple, deeppink);
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-brand {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: transparent;
+  color: white;
+}
+
+.navbar-brand::before {
+  content: '🌸 ';
+}
+
+.navbar-brand {
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.navbar-brand span.flower {
+  color: #ff69b4; /* pink */
+}
+
+.navbar-brand span.shop {
+  color: #dcd0ff; /* light purple */
+}
+
+.navbar .nav-link {
+  color: white !important;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  color: #ffd6f5 !important;
+  text-decoration: underline;
+}
+
+form.d-flex {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+}
+
+form.d-flex input {
+  background: transparent;
+  color: white;
+  border: 1px solid #ccc;
+}
+
+form.d-flex input::placeholder {
+  color: #ddd;
+}
+
+form.d-flex button {
+  margin-left: 10px;
+  background: #ff69b4;
+  border: none;
+  color: white;
+  transition: 0.3s ease;
+}
+
+form.d-flex button:hover {
+  background: #ff85c1;
+  color: black;
+}

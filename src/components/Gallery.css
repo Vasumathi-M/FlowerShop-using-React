@@ -1,0 +1,38 @@
+/* Gallery.css */
+
+.gallery_container {
+  background: linear-gradient(to right, #fff0f5, #ffe4ec);
+  padding: 2rem;
+  min-height: 100vh;
+  text-align: center;
+}
+
+/* Align each carousel item (no need for extra divs) */
+.carousel__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+/* Flower image as a card */
+.carousel__item img {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.carousel__item img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 35px rgba(255, 105, 180, 0.4);
+}
+
+/* Optional: adjust carousel spacing */
+.carousel__viewport {
+  gap: 30px; /* adds spacing between items */
+}
